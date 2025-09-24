@@ -52,7 +52,7 @@ def get_dataset():
         # image = cv2.equalizeHist(image)
         image = cv2.resize(image, (512, 512))
         # image = convolution(kernel_sharpen, image)
-        image = image+cv2.filter2D(image,-1,kernel_sharpen)
+        image = abs(image+cv2.filter2D(image,-1,kernel_sharpen))
 
         x_normal.append(image)
     
@@ -74,7 +74,7 @@ def get_dataset():
         if image.shape != (512, 512):
             continue
         # image = convolution(kernel_sharpen, image)
-        image = image+cv2.filter2D(image,-1,kernel_sharpen)
+        image = abs(image+cv2.filter2D(image,-1,kernel_sharpen))
 
         x_tb.append(image)
 
@@ -100,7 +100,7 @@ def get_dataset_test():
         # image = cv2.equalizeHist(image)
         image = cv2.resize(image, (512, 512))
         # image = convolution(kernel_sharpen, image)
-        image = image+cv2.filter2D(image,-1,kernel_sharpen)
+        image = abs(image+cv2.filter2D(image,-1,kernel_sharpen))
 
         x_normal.append(image)
     
@@ -123,7 +123,7 @@ def get_dataset_test():
         if image.shape != (512, 512):
             continue
         # image = convolution(kernel_sharpen, image)
-        image = image+cv2.filter2D(image,-1,kernel_sharpen)
+        image = abs(image+cv2.filter2D(image,-1,kernel_sharpen))
 
         x_tb.append(image)
 
