@@ -39,35 +39,34 @@ def get_dataset():
     x_tb=[]
     for i, img in enumerate(os.listdir(path_normal)):        
         image = cv2.imread(os.path.join(path_normal, img))
-        image = (image)/255
-        c = 255 / (1+np.max(image))
-        image = c*np.log(1+image)
-        image = np.array(image, dtype=np.uint8)
-
-        ycrcb_img = cv2.cvtColor(image, cv2.COLOR_BGR2YCrCb)
-        ycrcb_img[:, :, 0] = cv2.equalizeHist(ycrcb_img[:, :, 0])
-        image = cv2.cvtColor(ycrcb_img, cv2.COLOR_YCrCb2BGR)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-        # image = cv2.equalizeHist(image)
-        image = cv2.resize(image, (512, 512))
-        # image = convolution(kernel_sharpen, image)
-        # image = image+cv2.filter2D(image,-1,kernel_sharpen)
-
-        x_normal.append(image)
-    
-    for i, img in enumerate(os.listdir(path_tb)):
-        image = cv2.imread(os.path.join(path_tb, img))
         # Log transform
         image = (image)/255
         c = 255 / (1+np.max(image))
         image = c*np.log(1+image)
         image = np.array(image, dtype=np.uint8)
 
-        ycrcb_img = cv2.cvtColor(image, cv2.COLOR_BGR2YCrCb)
-        ycrcb_img[:, :, 0] = cv2.equalizeHist(ycrcb_img[:, :, 0])
-        image = cv2.cvtColor(ycrcb_img, cv2.COLOR_YCrCb2BGR)
+        image = cv2.equalizeHist(image)
+
+        # image = cv2.equalizeHist(image)
+        image = cv2.resize(image, (512, 512))
+        # image = convolution(kernel_sharpen, image)
+        image = image+cv2.filter2D(image,-1,kernel_sharpen)
+
+        x_normal.append(image)
+    
+    for i, img in enumerate(os.listdir(path_tb)):
+        image = cv2.imread(os.path.join(path_tb, img))
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        # Log transform
+        image = (image)/255
+        c = 255 / (1+np.max(image))
+        image = c*np.log(1+image)
+        image = np.array(image, dtype=np.uint8)
+
+        image = cv2.equalizeHist(image)
 
 
         # image = cv2.equalizeHist(image)
@@ -75,7 +74,7 @@ def get_dataset():
         if image.shape != (512, 512):
             continue
         # image = convolution(kernel_sharpen, image)
-        # image = image+cv2.filter2D(image,-1,kernel_sharpen)
+        image = image+cv2.filter2D(image,-1,kernel_sharpen)
 
         x_tb.append(image)
 
@@ -88,26 +87,7 @@ def get_dataset_test():
     x_tb=[]
     for i, img in enumerate(os.listdir(path_normal)):        
         image = cv2.imread(os.path.join(path_normal, img))
-        image = (image)/255
-        c = 255 / (1+np.max(image))
-        image = c*np.log(1+image)
-        image = np.array(image, dtype=np.uint8)
-
-        ycrcb_img = cv2.cvtColor(image, cv2.COLOR_BGR2YCrCb)
-        ycrcb_img[:, :, 0] = cv2.equalizeHist(ycrcb_img[:, :, 0])
-        image = cv2.cvtColor(ycrcb_img, cv2.COLOR_YCrCb2BGR)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-        # image = cv2.equalizeHist(image)
-        image = cv2.resize(image, (512, 512))
-        # image = convolution(kernel_sharpen, image)
-        # image = image+cv2.filter2D(image,-1,kernel_sharpen)
-
-        x_normal.append(image)
-    
-    for i, img in enumerate(os.listdir(path_tb)):
-
-        image = cv2.imread(os.path.join(path_tb, img))
 
         # Log transform
         image = (image)/255
@@ -115,10 +95,27 @@ def get_dataset_test():
         image = c*np.log(1+image)
         image = np.array(image, dtype=np.uint8)
 
-        ycrcb_img = cv2.cvtColor(image, cv2.COLOR_BGR2YCrCb)
-        ycrcb_img[:, :, 0] = cv2.equalizeHist(ycrcb_img[:, :, 0])
-        image = cv2.cvtColor(ycrcb_img, cv2.COLOR_YCrCb2BGR)
+        image = cv2.equalizeHist(image)
+
+        # image = cv2.equalizeHist(image)
+        image = cv2.resize(image, (512, 512))
+        # image = convolution(kernel_sharpen, image)
+        image = image+cv2.filter2D(image,-1,kernel_sharpen)
+
+        x_normal.append(image)
+    
+    for i, img in enumerate(os.listdir(path_tb)):
+
+        image = cv2.imread(os.path.join(path_tb, img))
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        # Log transform
+        image = (image)/255
+        c = 255 / (1+np.max(image))
+        image = c*np.log(1+image)
+        image = np.array(image, dtype=np.uint8)
+
+        image = cv2.equalizeHist(image)
 
 
         # image = cv2.equalizeHist(image)
@@ -126,7 +123,7 @@ def get_dataset_test():
         if image.shape != (512, 512):
             continue
         # image = convolution(kernel_sharpen, image)
-        # image = image+cv2.filter2D(image,-1,kernel_sharpen)
+        image = image+cv2.filter2D(image,-1,kernel_sharpen)
 
         x_tb.append(image)
 
