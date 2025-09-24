@@ -4,7 +4,7 @@ import cv2, numpy as np
 def get_segmentation(source):
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
 
-    k = 4
+    k = 2
 
     image = np.array(source,dtype=np.float32)
     pixel_values = np.array(image.reshape((-1, 3)) if len(image.shape) == 3 else image.reshape((-1, 1)))
