@@ -28,8 +28,8 @@ def get_dataset(path_normal = "TBX11K/imgs/combined_normal", path_tb = "TBX11K/i
         # image = convolution(kernel_sharpen, image)
         image = abs(image+cv2.filter2D(image,-1,kernel_sharpen))
         image = cv2.bitwise_not(image)
-        image = cv2.dilate(image, kernel_dilation, iterations=4)
-        image = cv2.erode(image, kernel_dilation, iterations=1)
+        image = cv2.dilate(image, kernel_dilation, iterations=2)
+        image = cv2.erode(image, kernel_dilation, iterations=2)
         image = cv2.copyMakeBorder(image, 2,2, 2, 2, borderType=cv2.BORDER_CONSTANT)
         x_normal.append(image)
     
@@ -53,8 +53,8 @@ def get_dataset(path_normal = "TBX11K/imgs/combined_normal", path_tb = "TBX11K/i
         # image = convolution(kernel_sharpen, image)
         image = abs(image+cv2.filter2D(image,-1,kernel_sharpen))
         image = cv2.bitwise_not(image)
-        image = cv2.dilate(image, kernel_dilation, iterations=4)
-        image = cv2.erode(image, kernel_dilation, iterations=1)
+        image = cv2.dilate(image, kernel_dilation, iterations=2)
+        image = cv2.erode(image, kernel_dilation, iterations=2)
         image = cv2.copyMakeBorder(image, 2,2, 2, 2, borderType=cv2.BORDER_CONSTANT)
 
         x_tb.append(image)
@@ -62,6 +62,8 @@ def get_dataset(path_normal = "TBX11K/imgs/combined_normal", path_tb = "TBX11K/i
     return x_normal, x_tb
 
 def get_dataset_test():
+    # path_normal = "Chest-X-Ray/normal"
+    # path_tb = "Chest-X-Ray/tb"
     path_normal = "TB_Chest_Radiography_Database/Normal"
     path_tb = "TB_Chest_Radiography_Database/Tuberculosis"
     return get_dataset(path_normal, path_tb)

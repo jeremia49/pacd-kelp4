@@ -74,7 +74,7 @@ def fill_white_areas(image):
 def get_segmentation(source): 
 
     # ret3,th3 = cv2.threshold(source,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-    ret3,th3 = cv2.threshold(source,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+    ret3,th3 = cv2.threshold(source,0,255,cv2.THRESH_OTSU)
 
     contours, hierarchy = cv2.findContours(image=th3, mode=cv2.RETR_TREE, method=cv2.CHAIN_APPROX_SIMPLE)
                                       
