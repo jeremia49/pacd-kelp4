@@ -50,9 +50,7 @@ if uploaded_file is not None:
         label = ''
         try:
             processedimage = preprocess(image)
-            st.image(processedimage, caption="Hasil Preprocessing", use_container_width=True)
             segmentedimage = model.segment(processedimage)
-            st.image(segmentedimage, caption="Hasil Segmentasi", use_container_width=True)
             result = model.process(segmentedimage)
             if(result) == 'tb':
                 label = "TBC"
