@@ -25,3 +25,4 @@ def preprocess(image):
     image = cv2.dilate(image, kernel_dilation, iterations=2)
     image = cv2.erode(image, kernel_dilation, iterations=2)
     image = cv2.copyMakeBorder(image, 2,2, 2, 2, borderType=cv2.BORDER_CONSTANT)
+    return image
