@@ -10,8 +10,10 @@ class ImageProcessor:
         self.clf = load(MODELPATH)
         self.le = load(LABELENCODERPATH)
 
-    def process(self,img):
-        segmented = get_segmentation(img)
+    def segment(self, img):
+        return get_segmentation(img)
+    
+    def process(self,segmented):
         result = self.clf.predict(segmented.flatten().reshape(1,-1))
         label = self.decode(result)
         return label[0]
