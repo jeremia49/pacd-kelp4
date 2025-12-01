@@ -52,7 +52,7 @@ if uploaded_file is not None:
             processedimage = preprocess(image)
 
             result = model.process(processedimage)
-            if(result[0]) == 'tb':
+            if(result) == 'tb':
                 label = "TBC"
             else:
                 label = "Normal"
