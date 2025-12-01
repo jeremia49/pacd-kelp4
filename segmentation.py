@@ -1,6 +1,5 @@
 import cv2, numpy as np
 
-
 def get_segmentation(source):
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
 
